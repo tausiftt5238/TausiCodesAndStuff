@@ -1,5 +1,5 @@
 #include <cstdio>
 int main(){
-  printf("JUST DO IT\n");
+  printf("pls work\n");
   return 0;
 }
