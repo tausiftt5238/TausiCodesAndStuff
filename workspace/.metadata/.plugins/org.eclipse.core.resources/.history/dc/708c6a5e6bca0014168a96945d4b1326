@@ -1,0 +1,100 @@
+package bounceTest;
+
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+
+class ball extends JPanel
+{
+	private int x;
+	private int y;
+	public static int height;
+	public static int width;
+	ball(int a,int b)
+	{
+		height = getHeight();
+		width = getWidth();
+		x = a;
+		y = b;
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawOval(x, y, 10, 10);
+	}
+	public void change(int a, int b)
+	{
+		x = a;
+		y = b;
+	}
+}
+class MyThread implements Runnable
+{
+	Thread t;
+	private int x;
+	private int y;
+	private int h;
+	private int w;
+	JFrame B;
+	MyThread(int a,int b,JFrame C)
+	{
+		x = a;
+		y = b;
+		B = C;
+		//B = new JFrame();
+		t = new Thread(this,"bounce's thread");
+		t.start();
+	}
+	public void run()
+	{
+		try
+		{
+			int i;
+			int h = y;
+			int add = 10;
+			for(i = 0 ; i < 100 ; i++)
+			{
+				if(ball.height == h)
+				{
+					add = -10;
+				}
+				else if(h == 0)
+				{
+					add = 10;
+				}
+				h = h + add;
+				ball ob = new ball(x,h+add);
+				B.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				B.add(ob);
+				Thread.sleep(500);
+			}
+		}
+		catch (InterruptedException e) {
+			System.out.println("Child Interrupted");
+		}
+	}
+}
+public class Bounce 
+{
+	public static void main(String args[])
+	{
+		JFrame application = new JFrame();
+		application.setSize(200, 200);
+		application.setVisible(true);
+		/*application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		application.setSize(200, 200);
+		application.setVisible(true);*/
+		MyThread ob1 = new MyThread(20,50,application);
+		MyThread ob2 = new MyThread(100,100,application);
+		try
+		{
+			ob1.t.join();
+			ob2.t.join();
+		}
+		catch(InterruptedException e)
+		{
+			System.out.println("well that was expected");
+		}
+	}
+}

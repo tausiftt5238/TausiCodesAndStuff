@@ -1,0 +1,14 @@
+package guiPackage;
+
+import javax.swing.*;
+import java.awt.*;
+
+class TextTestFrame extends JFrame
+{
+	super("This is the title");
+	
+}
+
+public class GuiTest {
+
+}

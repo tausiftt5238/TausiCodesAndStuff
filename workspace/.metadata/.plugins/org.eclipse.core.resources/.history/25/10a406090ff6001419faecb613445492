@@ -1,0 +1,127 @@
+package forumPackage;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class FrameClass extends JFrame{
+	private JTextField NameField,RollField,AddressField,HobbyField;
+	private JLabel Name,Roll,Address,Gender,Hobby;
+	private String NameString,RollString,AddressString,HobbyString,GenderString;
+	private JRadioButton Male,Female;
+	private JComboBox HobbyBox;
+	private String[] Hobbies = { "Video Games","Sports","Movies","Songs","Science"};
+	private boolean MaleGender,FemaleGender;
+	private JButton Submission;
+	private ButtonGroup radioGroup;
+	private JPanel panel;
+	private StoreInfo store;
+	public FrameClass(){
+		super("FORM");
+		setLayout(new GridLayout(6,2));
+		panel = new JPanel();
+		Name = new JLabel("Name");
+		Roll = new JLabel("Roll");
+		Address = new JLabel("Address");
+		Gender = new JLabel("Gender");
+		Hobby = new JLabel("Hobby");
+		NameField = new JTextField();
+		RollField  = new JTextField();
+		AddressField  = new JTextField();
+		HobbyField  = new JTextField();
+		Submission = new JButton("Submit");
+		Male = new JRadioButton("Male",true);
+		Female = new JRadioButton("Female",false);
+		radioGroup = new ButtonGroup();
+		radioGroup.add(Male);
+		radioGroup.add(Female);
+		MaleGender = true;
+		FemaleGender = false;
+		panel.add(Male);
+		panel.add(Female);
+		HobbyBox = new JComboBox(Hobbies);
+		
+		
+		add(Name);
+		add(NameField);
+		add(Roll);
+		add(RollField);
+		add(Address);
+		add(AddressField);
+		add(Gender);
+		add(panel);
+		add(Hobby);
+		add(HobbyField);
+		add(Submission);
+		TextHandler handler = new TextHandler();
+		NameField.addActionListener(handler);
+		RollField.addActionListener(handler);
+		AddressField.addActionListener(handler);
+		HobbyField.addActionListener(handler);
+		RadioHandler RHandler = new RadioHandler();
+		Male.addItemListener(RHandler);
+		Female.addItemListener(RHandler);
+		SubmitButton sHandler = new SubmitButton();
+		Submission.addActionListener(sHandler);
+		HobbyItemHandler hobbyHandler = new HobbyItemHandler();
+		HobbyBox.addItemListener(hobbyHandler);
+	}
+	private class TextHandler implements ActionListener{
+
+		String input;
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			input = event.getActionCommand();
+			if(event.getSource() == NameField){
+				NameString = input;
+			}
+			else if(event.getSource() == RollField){
+				RollString = input;
+			}
+			else if(event.getSource() == AddressField){
+				AddressString = input;
+			}
+			else if(event.getSource() == HobbyField){
+				HobbyString = input;
+			}
+		}
+	}
+	private class RadioHandler implements ItemListener{
+		@Override
+		public void itemStateChanged(ItemEvent event) {
+			MaleGender = !MaleGender;
+			FemaleGender = !FemaleGender;
+		}
+		
+	}
+	private class SubmitButton implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			if(MaleGender == true) GenderString = "Male";
+			else GenderString = "Female";
+			store = new StoreInfo(NameString,RollString,AddressString,GenderString,HobbyString);
+			store.print();
+		}
+		
+	}
+	private class HobbyItemHandler implements ItemListener{
+
+		@Override
+		public void itemStateChanged(ItemEvent event) {
+			
+		}
+		
+	}
+}

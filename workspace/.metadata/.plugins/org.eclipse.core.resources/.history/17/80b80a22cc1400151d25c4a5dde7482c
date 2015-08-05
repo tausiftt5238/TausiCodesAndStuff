@@ -1,0 +1,8 @@
+import java.io.FileWriter;
+
+
+public class FileWritingTest {
+	public static void main(String args[]){
+		FileWriter fw = new FileWriter("test.txt");
+	}
+}

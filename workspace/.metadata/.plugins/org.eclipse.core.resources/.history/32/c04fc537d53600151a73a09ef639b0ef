@@ -1,0 +1,9 @@
+package gametute2.graphics;
+
+public class AnimatedSprite extends Sprite {
+
+	public AnimatedSprite(){
+		super(sheet,height,width);
+	}
+
+}

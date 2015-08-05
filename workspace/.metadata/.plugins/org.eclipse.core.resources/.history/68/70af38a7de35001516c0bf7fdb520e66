@@ -1,0 +1,7 @@
+package gametute2.entity.spawner;
+
+public class ParticleSpawner extends Spawner{
+	public ParticleSpawner(int x,int y,Type type,int amount,Level level){
+		super
+	}
+}

@@ -1,0 +1,5 @@
+package forumPackage;
+
+public class StoreInfo {
+	private String Name,Roll,Address,Gender,
+}

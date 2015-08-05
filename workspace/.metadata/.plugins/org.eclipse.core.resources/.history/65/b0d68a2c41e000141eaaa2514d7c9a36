@@ -1,0 +1,21 @@
+package guiPackage;
+import javax.swing.*;
+import java.awt.*;
+
+class TestFrame extends JFrame
+{
+	private JPanel mainPanel;
+	private JPanel subPanel;
+	public TestFrame()
+	{
+		
+	}
+}
+
+public class PanelXPanel 
+{
+	public static void main(String args[])
+	{
+		
+	}
+}

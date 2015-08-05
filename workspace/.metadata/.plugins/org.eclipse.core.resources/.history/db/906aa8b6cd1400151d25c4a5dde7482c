@@ -1,0 +1,14 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+
+public class FileWritingTest {
+	public static void main(String args[]) throws IOException{
+		FileReader fr = null;
+		fr = new FileReader("test.txt");
+		Scanner s = new Scanner(fr);
+		String str = s.nextLine();
+		System.out.println(str);
+	}
+}

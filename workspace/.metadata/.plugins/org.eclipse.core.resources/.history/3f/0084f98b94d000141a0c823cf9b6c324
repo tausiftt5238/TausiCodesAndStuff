@@ -1,0 +1,19 @@
+class supes
+{
+	supes()
+	{
+		System.out.printf("this is from supes\n");
+	}
+}
+
+class subs extends supes
+{
+	subs()
+	{
+		System.out.printf("'Tis but son of superman\n");
+	}
+}
+public class InheritenceTest 
+{
+
+}

@@ -1,0 +1,9 @@
+package forumPackage;
+
+import javax.swing.*;
+
+public class FrameClass extends JFrame{
+	private JTextField NameField,RollField,AddressField,HobbyField;
+	private JLabel Name,Roll,Address,Gender,Hobby;
+	private 
+}

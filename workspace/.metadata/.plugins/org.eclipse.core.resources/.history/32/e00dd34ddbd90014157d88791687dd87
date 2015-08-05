@@ -1,0 +1,21 @@
+package guiPackage;
+
+import javax.swing.*;
+import java.awt.*;
+
+class TextTestFrame extends JFrame
+{
+	private JTextField textfield1;
+	public TextTestFrame()
+	{
+		super("This is the title");
+		setLayout(new FlowLayout());
+		
+		textfield1 = new JTextField("Write whatever you want over here");
+	}
+	
+}
+
+public class GuiTest {
+
+}

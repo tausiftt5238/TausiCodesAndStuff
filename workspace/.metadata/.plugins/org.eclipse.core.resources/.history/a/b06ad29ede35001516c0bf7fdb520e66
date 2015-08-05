@@ -1,0 +1,5 @@
+package gametute2.entity.spawner;
+
+public class ParticleSpawner extends Spawner{
+	
+}

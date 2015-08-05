@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;levelPixels&apos; in &apos;gametute2.level.SpawnLevel&apos; to &apos;tiles&apos;&#x0A;- Original project: &apos;GameTute 2&apos;&#x0A;- Original element: &apos;gametute2.level.SpawnLevel.levelPixels&apos;&#x0A;- Renamed element: &apos;gametute2.level.SpawnLevel.tiles&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;levelPixels&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;gametute2.level{SpawnLevel.java[SpawnLevel^levelPixels" name="tiles" references="true" setter="false" stamp="1430582371262" textual="false" version="1.0"/>
+</session>

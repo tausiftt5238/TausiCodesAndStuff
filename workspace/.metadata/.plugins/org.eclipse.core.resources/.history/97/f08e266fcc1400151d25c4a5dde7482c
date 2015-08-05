@@ -1,0 +1,20 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class FileWritingTest {
+	public static void main(String args[]){
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter("test.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try{
+			fw.write("this is a triumph");
+			fw.write("I'm making a note here, huge success");
+		}catch(IOException e){
+			System.out.println(e);
+		}
+	}
+}

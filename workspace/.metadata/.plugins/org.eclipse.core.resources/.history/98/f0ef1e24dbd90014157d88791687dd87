@@ -1,0 +1,14 @@
+package guiPackage;
+
+import javax.swing.*;
+import java.awt.*;
+
+class TextTestFrame extends JFrame
+{
+	private JTextFile textfield1;
+	
+}
+
+public class GuiTest {
+
+}

@@ -1,0 +1,9 @@
+package forumPackage;
+
+public class StoreInfo {
+	private String Name,Roll,Address,Gender,Hobby;
+	public StoreInfo(String Name,String Roll,String Address,String Gender,String Hobby){
+		this.Name = Name;
+		this.
+	}
+}

@@ -1,0 +1,5 @@
+package gametute2.graphics;
+
+public class AnimatedSprite extends Sprite {
+
+}

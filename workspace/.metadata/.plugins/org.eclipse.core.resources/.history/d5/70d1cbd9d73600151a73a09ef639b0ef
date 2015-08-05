@@ -1,0 +1,25 @@
+package gametute2.graphics;
+
+public class AnimatedSprite extends Sprite {
+
+	private int frame;
+	private Sprite sprite;
+	private int rate = 5;
+	private int animationSize = 0;
+	
+	
+	public AnimatedSprite(SpriteSheet sheet,int width,int height){
+		super(sheet,height,width);
+		frame = 0;
+	}
+
+	public void update(){
+		
+	}
+	public Sprite getSprite(){
+		return sprite;
+	}
+	public void setFrameRate(int frames){
+		rate = frames;
+	}
+}

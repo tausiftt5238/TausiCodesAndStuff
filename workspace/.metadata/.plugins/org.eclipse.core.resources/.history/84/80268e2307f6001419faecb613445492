@@ -1,0 +1,48 @@
+package forumPackage;
+
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class FrameClass extends JFrame{
+	private JTextField NameField,RollField,AddressField,HobbyField;
+	private JLabel Name,Roll,Address,Gender,Hobby;
+	private JRadioButton Male,Female;
+	private JButton Submission;
+	private ButtonGroup radioGroup;
+	private JPanel panel;
+	
+	public FrameClass(){
+		setLayout(new GridLayout());
+		panel = new JPanel();
+		Name = new JLabel("Name");
+		Roll = new JLabel("Roll");
+		Address = new JLabel("Address");
+		Gender = new JLabel("Gender");
+		Hobby = new JLabel("Hobby");
+		NameField = new JTextField();
+		RollField  = new JTextField();
+		AddressField  = new JTextField();
+		HobbyField  = new JTextField();
+		Submission = new JButton("Submit");
+		Male = new JRadioButton("Male",true);
+		Female = new JRadioButton("Female",false);
+		radioGroup = new ButtonGroup();
+		radioGroup.add(Male);
+		radioGroup.add(Female);
+		panel.add(Male);
+		panel.add(Female);
+		add(Name);
+		add(NameField);
+		add(Roll);
+		add(RollField);
+		add(Address);
+		add(AddressField);
+		add(Gender);
+		add(panel);
+		add(Hobby);
+		add(HobbyField);
+		add(Submission);
+	}
+	private Class 
+}

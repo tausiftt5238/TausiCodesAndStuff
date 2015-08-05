@@ -1,0 +1,9 @@
+package guiPackage;
+
+import javax.swing.*;
+import java.awt.*;
+
+
+public class GuiTest {
+
+}

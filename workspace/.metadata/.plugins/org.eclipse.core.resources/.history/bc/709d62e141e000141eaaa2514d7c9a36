@@ -1,0 +1,37 @@
+package guiPackage;
+import javax.swing.*;
+import java.awt.*;
+
+class TestPanel extends JPanel
+{
+	public DrawingComponent(Graphics g)
+	{
+		
+	}
+}
+
+class TestFrame extends JFrame
+{
+	private JPanel mainPanel;
+	private TestPanel subPanel;
+	public TestFrame()
+	{
+		mainPanel = new JPanel();
+		subPanel = new JPanel();
+		mainPanel.setBackground(Color.BLUE);
+		subPanel.setBackground(Color.RED);
+		mainPanel.add(subPanel,BorderLayout.SOUTH);
+		add(mainPanel,BorderLayout.CENTER);
+	}
+}
+
+public class PanelXPanel 
+{
+	public static void main(String args[])
+	{
+		TestFrame x = new TestFrame();
+		x.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		x.setVisible(true);
+		x.setSize(500, 500);
+	}
+}

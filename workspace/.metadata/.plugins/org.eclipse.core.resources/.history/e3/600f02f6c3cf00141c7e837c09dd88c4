@@ -1,0 +1,30 @@
+import java.awt.Graphics;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+class DrawC extends JPanel
+{
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponents(g);
+		int x = getHeight()/2;
+		int y = getWidth()/2;
+		//g.drawOval(x, y, 10, 10);
+		for(int i = 0;i < 15; i++)
+		{
+			g.drawOval(x - i*5,y - i*5,i*10,i*10);
+		}
+	}
+}
+public class DrawCircle 
+{
+	public static void main(String args[])
+	{
+		DrawC circle = new DrawC();
+		JFrame application = new JFrame();
+		application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		application.add(circle);
+		application.setSize(300,300);
+		application.setVisible(true);
+	}
+}

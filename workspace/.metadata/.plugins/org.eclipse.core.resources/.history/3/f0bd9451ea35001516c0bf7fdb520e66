@@ -1,0 +1,46 @@
+package gametute2.entity.particle;
+
+import gametute2.entity.Entity;
+import gametute2.graphics.Screen;
+import gametute2.graphics.Sprite;
+
+public class Particle extends Entity {
+	//private static List <Particle> particles = new ArrayList <Particle> ();
+	
+	Sprite sprite;
+	
+	private int life;
+	private int time = 0;
+	protected double xx,yy,zz;
+	protected double xa,ya,za;
+	
+	public Particle(int x,int y, int life){
+		this.x = x;
+		this.y = y;
+		this.xx = x;
+		this.yy = y;
+		this.life = life + (random.nextInt(20) - 10);
+		sprite = Sprite.partcile_normal;
+		this.xa = random.nextGaussian();
+		this.ya = random.nextGaussian();
+		this.zz = 2.0;
+	}
+	
+	
+	@Override
+	public void update(){
+		time++;
+		if(time >= 7400) time = 0;
+		if(time > life)	remove();
+		this.za -= 0.1;
+		this.xx += xa;
+		this.yy += ya;
+		this.zz += za;
+		
+	}
+	@Override
+	public void render(Screen screen){
+		screen.renderSprite((int)xx, (int)yy - (int) zz, sprite, true);
+		
+	}
+}

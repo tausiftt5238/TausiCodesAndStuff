@@ -1,0 +1,17 @@
+package bounceTest;
+
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+
+class ball extends JPanel
+{
+	private int x;
+	private int y;
+	
+}
+
+public class Bounce 
+{
+
+}

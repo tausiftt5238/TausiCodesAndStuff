@@ -1,0 +1,8 @@
+class IngeterSet
+{
+	private boolean integers[] = new boolean[101];
+	
+}
+public class IntegerSetTest {
+
+}

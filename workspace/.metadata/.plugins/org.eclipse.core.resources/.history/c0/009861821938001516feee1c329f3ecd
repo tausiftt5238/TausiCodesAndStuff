@@ -1,0 +1,51 @@
+package projectvania.entity.mob;
+
+import projectvania.entity.Entity;
+import projectvania.graphics.Screen;
+import projectvania.graphics.Sprite;
+
+public abstract class Mob extends Entity {
+	protected Sprite sprite;
+	protected boolean moving = false;
+	protected boolean falling = false;
+	protected boolean walking = false;
+	protected boolean jumping = false;
+	
+	protected enum Direction {
+		UP,DOWN,LEFT,RIGHT;
+	}
+	
+	protected Direction dir;
+	
+	public void move(int xa,int ya) {
+		/*if(xa!=0 && ya!=0) {
+			move(0,ya);
+			move(xa,0);
+			return;
+		}*/
+		
+		if(xa>0) dir = Direction.RIGHT;
+		if(xa<0) dir = Direction.LEFT;
+		
+		if(ya<0) dir = Direction.UP;
+		
+		falling = false;
+		
+		if(!collision(xa,ya)) {
+			x += xa;
+			if(!jumping) y += ya;
+			if(ya>0) {
+				falling = true;
+			}
+		}
+	}
+	
+	public abstract void update();
+
+	public boolean collision(int xa,int ya) {
+		return level.tileCollision(x+xa, y+ya, 16, 0, 15);
+	}
+	
+	public abstract void render(Screen screen);
+	
+}

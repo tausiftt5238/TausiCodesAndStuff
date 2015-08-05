@@ -1,0 +1,11 @@
+class Inh
+{
+	
+}
+public class InheritenceTest 
+{
+	public static void main(String args[])
+	{
+		
+	}
+}

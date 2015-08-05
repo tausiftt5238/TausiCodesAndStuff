@@ -1,0 +1,16 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class FileWritingTest {
+	public static void main(String args[]){
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter("test.txt");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		fw.write("this is a triumph");
+		
+	}
+}

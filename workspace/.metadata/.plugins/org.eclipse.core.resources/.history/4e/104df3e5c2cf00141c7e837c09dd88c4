@@ -1,0 +1,50 @@
+class IntegerSet
+{
+	private boolean integers[] = new boolean[101];
+	public IntegerSet()
+	{
+		for(int i = 0; i < 101 ; i++) integers[i] = false;
+	}
+	public void insertElement(int k)
+	{
+		integers[k] = true;
+	}
+	public boolean getElement(int k)
+	{
+		return integers[k];
+	}
+	public void deleteElement(int k)
+	{
+		integers[k] = false;
+	}
+	static boolean[] union(IntegerSet a, IntegerSet b)
+	{
+		boolean x[] = new boolean[101];
+		for(int i = 0; i< 101; i++) x[i] = a.getElement(i) | b.getElement(i);
+		return x;
+	}
+	static boolean[] intersection(IntegerSet a, IntegerSet b)
+	{
+		boolean x[] = new boolean[101];
+		for(int i = 0; i< 101; i++) x[i] = a.getElement(i) & b.getElement(i);
+		return x;
+	}
+	public String toString()
+	{
+		String outputString = null;
+		for(int i = 0; i< 101; i++)
+		{
+			if(integers[i] == true)
+			{
+				outputString += String.format("%d",i);
+			}
+		}
+	}
+}
+public class IntegerSetTest 
+{
+	public static void main(String args[])
+	{
+		
+	}
+}

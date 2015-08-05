@@ -1,0 +1,65 @@
+package forumPackage;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class FrameClass extends JFrame{
+	private JTextField NameField,RollField,AddressField,HobbyField;
+	private JLabel Name,Roll,Address,Gender,Hobby;
+	private String NameString,RollString,AddressString,HobbyString;
+	private JRadioButton Male,Female;
+	private JButton Submission;
+	private ButtonGroup radioGroup;
+	private JPanel panel;
+	
+	public FrameClass(){
+		setLayout(new GridLayout(6,2));
+		panel = new JPanel();
+		Name = new JLabel("Name");
+		Roll = new JLabel("Roll");
+		Address = new JLabel("Address");
+		Gender = new JLabel("Gender");
+		Hobby = new JLabel("Hobby");
+		NameField = new JTextField();
+		RollField  = new JTextField();
+		AddressField  = new JTextField();
+		HobbyField  = new JTextField();
+		Submission = new JButton("Submit");
+		Male = new JRadioButton("Male",true);
+		Female = new JRadioButton("Female",false);
+		radioGroup = new ButtonGroup();
+		radioGroup.add(Male);
+		radioGroup.add(Female);
+		panel.add(Male);
+		panel.add(Female);
+		add(Name);
+		add(NameField);
+		add(Roll);
+		add(RollField);
+		add(Address);
+		add(AddressField);
+		add(Gender);
+		add(panel);
+		add(Hobby);
+		add(HobbyField);
+		add(Submission);
+	}
+	private class TextHandler implements ActionListener{
+
+		String input;
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			input = event.getActionCommand();
+			if(event.getSource() == NameField){
+				NameString = input;
+			}
+			if(event.getSource() == RollField){
+				RollString = input;
+			}
+			if()
+		}
+	}
+}

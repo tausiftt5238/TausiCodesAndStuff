@@ -1,0 +1,13 @@
+package guiPackage;
+
+import javax.swing.*;
+import java.awt.*;
+
+class TextTestFrame extends JFrame
+{
+	
+}
+
+public class GuiTest {
+
+}

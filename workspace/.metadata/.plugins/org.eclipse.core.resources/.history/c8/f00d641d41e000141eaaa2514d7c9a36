@@ -1,0 +1,13 @@
+package guiPackage;
+import javax.swing.*;
+import java.awt.*;
+
+
+
+public class PanelXPanel 
+{
+	public static void main(String args[])
+	{
+		
+	}
+}

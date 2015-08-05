@@ -1,0 +1,16 @@
+package gametute2.graphics;
+
+public class AnimatedSprite extends Sprite {
+
+	private int frame;
+	
+	public AnimatedSprite(SpriteSheet sheet,int width,int height){
+		super(sheet,height,width);
+		frame = 0;
+	}
+
+	public update(){
+		
+	}
+	
+}

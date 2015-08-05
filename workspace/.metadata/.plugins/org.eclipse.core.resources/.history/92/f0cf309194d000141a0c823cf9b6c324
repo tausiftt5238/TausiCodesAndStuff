@@ -1,0 +1,26 @@
+class supes
+{
+	supes()
+	{
+		System.out.printf("this is from supes\n");
+	}
+	public void meth()
+	{
+		System.out.printf("i'm not into meth\n");
+	}
+}
+
+class subs extends supes
+{
+	subs()
+	{
+		System.out.printf("'Tis but son of superman\n");
+	}
+}
+public class InheritenceTest 
+{
+	public static void main(String args[])
+	{
+		subs
+	}
+}

@@ -1,0 +1,9 @@
+
+public class InheritenceTest 
+{
+	public static void main(String args[])
+	{
+		subsOfSubs x = new subsOfSubs();
+		x.meth();
+	}
+}

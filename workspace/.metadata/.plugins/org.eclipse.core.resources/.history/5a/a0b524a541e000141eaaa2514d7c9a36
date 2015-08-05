@@ -1,0 +1,27 @@
+package guiPackage;
+import javax.swing.*;
+import java.awt.*;
+
+class TestFrame extends JFrame
+{
+	private JPanel mainPanel;
+	private JPanel subPanel;
+	public TestFrame()
+	{
+		mainPanel = new JPanel();
+		subPanel = new JPanel();
+		mainPanel.setBackground(Color.BLUE);
+		subPanel.setBackground(Color.RED);
+		mainPanel.add(subPanel,BorderLayout.NORTH);
+		add(mainPanel);
+		
+	}
+}
+
+public class PanelXPanel 
+{
+	public static void main(String args[])
+	{
+		
+	}
+}

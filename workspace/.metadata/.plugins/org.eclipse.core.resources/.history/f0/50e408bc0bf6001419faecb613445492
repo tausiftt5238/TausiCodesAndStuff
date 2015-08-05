@@ -1,0 +1,15 @@
+package forumPackage;
+
+public class StoreInfo {
+	private String Name,Roll,Address,Gender,Hobby;
+	public StoreInfo(String Name,String Roll,String Address,String Gender,String Hobby){
+		this.Name = Name;
+		this.Address = Address;
+		this.Roll = Roll;
+		this.Gender = Gender;
+		this.Hobby = Hobby;
+	}
+	public print(){
+		System.out.println(this);
+	}
+}

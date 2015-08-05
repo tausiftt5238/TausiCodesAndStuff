@@ -1,0 +1,11 @@
+package forumPackage;
+
+import javax.swing.JFrame;
+
+public class MainClass {
+	public static void main(String args[]){
+		FrameClass f = new FrameClass();
+		f.setDefaultOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+}

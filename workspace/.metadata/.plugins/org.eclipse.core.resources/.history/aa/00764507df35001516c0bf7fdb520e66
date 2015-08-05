@@ -1,0 +1,21 @@
+package gametute2.entity.spawner;
+
+import gametute2.entity.particle.Particle;
+import gametute2.entity.spawner.Spawner.Type;
+import gametute2.level.Level;
+
+public class ParticleSpawner extends Spawner{
+	
+	private int life;
+	
+	public ParticleSpawner(int x,int y,int life,int amount,Level level){
+		super(x,y,Type.PARTICLE,amount,level);
+		this.life = life;
+		for(int i = 0 ; i < amount ; i ++){
+			if(type == Type.PARTICLE){
+				level.add(new Particle(x,y,50));
+			}
+		}
+		
+	}
+}

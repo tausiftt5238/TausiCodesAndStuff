@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;gametute2.entity.spawner.particleSpawner&apos; to &apos;ParticleSpawner&apos;&#x0A;- Original project: &apos;GameTute 2&apos;&#x0A;- Original element: &apos;gametute2.entity.spawner.particleSpawner&apos;&#x0A;- Renamed element: &apos;gametute2.entity.spawner.ParticleSpawner&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;particleSpawner&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;gametute2.entity.spawner{particleSpawner.java[particleSpawner" matchStrategy="1" name="ParticleSpawner" qualified="false" references="true" similarDeclarations="false" stamp="1438166556461" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,191 @@
+package gametute2;
+import gametute2.entity.mob.Player;
+import gametute2.graphics.Screen;
+import gametute2.graphics.Sprite;
+import gametute2.input.Keyboard;
+import gametute2.input.Mouse;
+import gametute2.level.Level;
+import gametute2.level.SpawnLevel;
+import gametute2.level.TileCoordinate;
+
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+
+import javax.swing.JFrame;
+
+public class Game extends Canvas implements Runnable{
+
+
+	private static final long serialVersionUID = 1L;
+	
+	private static final int WIDTH = 300;
+	private static final int HEIGHT = WIDTH / 16 * 9;
+	private static final int SCALE = 3;
+	public static final String NAME = "Game";
+	private Player player;
+	
+	private Thread thread;
+	
+	private JFrame frame;
+	private Screen screen;
+	private Keyboard key;
+	private Level level;
+	
+	public boolean running = false;
+	public int tickCount = 0;
+	
+	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+	
+	public Game(){
+		
+		screen = new Screen(WIDTH,HEIGHT);
+		frame = new JFrame(NAME);
+		key = new Keyboard();
+		level = new SpawnLevel("/textures/spawn.png");
+		
+		TileCoordinate playerSpawn = new TileCoordinate(19,62);
+		
+		player = new Player(playerSpawn.x,playerSpawn.y,key);
+		player.init(level);
+		setMinimumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
+		setMaximumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
+		setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
+		
+		addKeyListener(key);
+		
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		
+		frame.add(this, BorderLayout.CENTER);
+		frame.pack();
+		
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+	
+	public synchronized void start() {
+		running = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	
+    public synchronized void stop() {
+		running = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void run() {	
+		requestFocus();
+		long lastTime = System.nanoTime();
+		long timer = System.currentTimeMillis();
+		final double ns = 1000000000.0 / 60.0;
+		double delta = 0;
+		int frames= 0;
+		int ticks= 0;
+		//frame.requestFocus();
+		
+		while(running) {
+			long now = System.nanoTime();
+			delta += (now-lastTime) / ns;
+			lastTime=now;
+			while(delta>=1) {
+				update();
+				ticks++;
+				delta--;
+			}
+			render();
+			frames++;
+			if(System.currentTimeMillis()-timer>1000) { //adds a second to the timer so that the checking difference doesn't get bigger
+				timer += 1000;
+				//System.out.println(ticks + "ticks, " + frames + "frames");
+				frame.setTitle(NAME + " | " + ticks + "ticks, " + frames + "frames");
+				ticks=0;
+				frames=0;
+			}
+		}
+		
+		
+		
+	}
+	
+	public void update(){ //cherno named it update, don't be confused, better yet, change it
+		/*tickCount++;
+		
+		for (int i = 0; i < pixels.length; i++){
+			pixels[i] = i + tickCount;
+		}*/
+		key.update();
+		player.update();
+		level.update();
+	}
+	
+	public void render(){
+		BufferStrategy bs = getBufferStrategy();
+		if (bs == null){
+			createBufferStrategy(3);
+			return;
+		}
+		int xScroll = player.x - screen.width/2;
+		int yScroll = player.y - screen.height/2;
+		
+		screen.clear();
+		level.render(xScroll, yScroll, screen);
+		player.render(screen);
+		screen.renderSheet(40, 40, SpriteSheet.player, false);
+		//Sprite sprite = new Sprite(80,80,0xffff00ff);
+		//screen.renderSprite(0,0,sprite,false);
+		/*
+		 * Here is where it gets confusing, so might as well write it down.
+		 * The calling hierarchy works as follows:
+		 * we've generated a map in the level constructor in the tiles array that 
+		 * holds the type of tile for a specific part of the level
+		 * level.render creates corner pins, gets the tile starting from the corner
+		 * via the getTile method giving it an (x,y) and then renders the tile that should be there (tile.render())
+		 * this method keeps getting called in a loop for each tile that is to be shown
+		 * the method calls the renderTile() method of the Screen class which renders the tile in its absolute position
+		 * taking into account the Offset and all that shit. this is copied into Screen.pixels[]
+		 * which is then moved to Game.pixels[], the representative array of the BufferedImage.  
+		 */
+		
+		for(int i=0; i<pixels.length; i++) {
+			pixels[i]= screen.pixels[i];
+		}
+		
+		Graphics g = bs.getDrawGraphics();
+		
+		//g.setColor(Color.black);
+		//g.fillRect(0, 0, getWidth(), getHeight());
+		
+		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g.setColor(Color.WHITE);
+				
+		g.dispose();
+		bs.show();
+	}
+	public static int getWindowWidth(){
+		return WIDTH * SCALE;
+	}
+	public static int getWindowHeight(){
+		return HEIGHT * SCALE;
+	}
+	public static void main(String[] args){ 
+		new Game().start();
+	}
+
+}

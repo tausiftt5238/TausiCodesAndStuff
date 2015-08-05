@@ -1,0 +1,60 @@
+package bounceTest;
+
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+
+class ball extends JPanel
+{
+	private int x;
+	private int y;
+	public static int height;
+	public static int width;
+	ball(int a,int b)
+	{
+		height = getHeight();
+		width = getWidth();
+		x = a;
+		y = b;
+	}
+	public void paintComponent(Graphics g)
+	{
+		g.drawOval(x, y, 10, 10);
+	}
+	public void change(int a, int b)
+	{
+		x = a;
+		y = b;
+	}
+}
+class MyThread implements Runnable
+{
+	Thread t;
+	private int x;
+	private int y;
+	private int h;
+	private int w;
+	MyThread(int a,int b)
+	{
+		x = a;
+		y = b;
+		t = new Thread(this,"bounce's thread");
+		t.start();
+	}
+	public void run()
+	{
+		try
+		{
+			int i;
+			int h = y;
+			for(i = 0 ; i < 100 ; i++)
+			{
+				if(ball.height == h)
+			}
+		}
+	}
+}
+public class Bounce 
+{
+
+}
